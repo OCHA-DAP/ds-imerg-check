@@ -32,16 +32,17 @@ for label, url in urls.items():
             {"link": link, "first_seen": current_time, "label": label}
         )
 
+# Convert results to DataFrame
+new_df = pd.DataFrame(results)
+
 # Check if results.csv exists
 if os.path.exists("results.csv"):
     df = pd.read_csv("results.csv")
 else:
     df = pd.DataFrame(columns=["link", "first_seen", "label"])
 
-# Add new links
-for result in results:
-    if result["link"] not in df["link"].values:
-        df = df.append(result, ignore_index=True)
+# Merge new results with existing DataFrame, keeping only unique links
+df = pd.concat([df, new_df]).drop_duplicates(subset="link", keep="first")
 
 # Save to CSV
 df.to_csv("results.csv", index=False)
