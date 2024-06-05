@@ -42,7 +42,16 @@ else:
     df = pd.DataFrame(columns=["link", "first_seen", "label"])
 
 # Merge new results with existing DataFrame, keeping only unique links
+initial_row_count = len(df)
 df = pd.concat([df, new_df]).drop_duplicates(subset="link", keep="first")
+new_row_count = len(df)
 
 # Save to CSV
 df.to_csv("results.csv", index=False)
+
+# Set flag to indicate if there are new links
+new_links_found = new_row_count > initial_row_count
+
+# Write the flag to a file
+with open("new_links_flag.txt", "w") as f:
+    f.write(str(new_links_found))
