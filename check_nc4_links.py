@@ -11,6 +11,10 @@ urls = {
     "GPM_L3/GPM_3IMERGDL.06/2024/06/",
     "early": "https://gpm1.gesdisc.eosdis.nasa.gov/data/"
     "GPM_L3/GPM_3IMERGDE.06/2024/06/",
+    "late_v7": "https://gpm1.gesdisc.eosdis.nasa.gov/data/"
+    "GPM_L3/GPM_3IMERGDL.07/2024/06/",
+    "early_v7": "https://gpm1.gesdisc.eosdis.nasa.gov/data/"
+    "GPM_L3/GPM_3IMERGDE.07/2024/06/",
 }
 
 # Initialize empty list to hold results
